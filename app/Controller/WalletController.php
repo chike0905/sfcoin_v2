@@ -7,7 +7,7 @@ class WalletController extends AppController {
     //user_idとusername取得
     $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
     $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];a
+    $username = $userdatas[0]['User']['username'];
     //保有coinの取得
     $datas = $this->Wallet->find('all',array('conditions' => array('Wallet.id' => $user_id)));
     $coin = $datas[0]['Wallet']['coin'];
