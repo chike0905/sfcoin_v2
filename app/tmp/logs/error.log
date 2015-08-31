@@ -1,0 +1,279 @@
+2015-08-31 05:40:32 Error: [MissingComponentException] Component class ToolbarComponent could not be found.
+Exception Attributes: array (
+  'class' => 'ToolbarComponent',
+  'plugin' => 'DebugKit',
+)
+Request URL: /sfcoin_v2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/ComponentCollection.php(53): ComponentCollection->load('DebugKit.Toolba...', Array)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(643): ComponentCollection->init(Object(PagesController))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(188): Controller->constructClasses()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 05:44:04 Error: [MissingComponentException] Component class ToolbarComponent could not be found.
+Exception Attributes: array (
+  'class' => 'ToolbarComponent',
+  'plugin' => 'DebugKit',
+)
+Request URL: /sfcoin_v2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/ComponentCollection.php(53): ComponentCollection->load('DebugKit.Toolba...', Array)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(643): ComponentCollection->init(Object(PagesController))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(188): Controller->constructClasses()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 05:44:05 Error: [MissingComponentException] Component class ToolbarComponent could not be found.
+Exception Attributes: array (
+  'class' => 'ToolbarComponent',
+  'plugin' => 'DebugKit',
+)
+Request URL: /sfcoin_v2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/ComponentCollection.php(53): ComponentCollection->load('DebugKit.Toolba...', Array)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(643): ComponentCollection->init(Object(PagesController))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(188): Controller->constructClasses()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 06:18:10 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-08-31 06:18:21 Error: [MissingControllerException] Controller class WalletController could not be found.
+Exception Attributes: array (
+  'class' => 'WalletController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-08-31 06:24:26 Error: Fatal Error (4): syntax error, unexpected 'index' (T_STRING), expecting variable (T_VARIABLE) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 5]
+2015-08-31 06:24:26 Error: [FatalErrorException] syntax error, unexpected 'index' (T_STRING), expecting variable (T_VARIABLE)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 5)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:24:57 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 6]
+2015-08-31 06:24:57 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 6)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 6, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 6, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:26:58 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:26:58 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:29:10 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 8]
+2015-08-31 06:29:10 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 8)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 8, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 8, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:29:28 Error: [MissingTableException] Table wallets for model wallet was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'wallets',
+  'class' => 'wallet',
+  'ds' => 'default',
+)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(3644): Model->setSource('wallets')
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1483): Model->schema()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1470): Model->hasField('title', false)
+#4 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(907): Model->hasField(Array)
+#5 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Scaffold.php(130): Model->__get('displayField')
+#6 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(535): Scaffold->__construct(Object(WalletController), Object(CakeRequest))
+#7 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(494): Controller->_getScaffold(Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(WalletController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-08-31 06:33:02 Error: [MissingTableException] Table wallets for model wallet was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'wallets',
+  'class' => 'wallet',
+  'ds' => 'default',
+)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(3644): Model->setSource('wallets')
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1483): Model->schema()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1470): Model->hasField('title', false)
+#4 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(907): Model->hasField(Array)
+#5 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Scaffold.php(130): Model->__get('displayField')
+#6 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(535): Scaffold->__construct(Object(WalletController), Object(CakeRequest))
+#7 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(494): Controller->_getScaffold(Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(WalletController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-08-31 06:36:45 Error: [MissingTableException] Table wallets for model wallet was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'wallets',
+  'class' => 'wallet',
+  'ds' => 'default',
+)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(3644): Model->setSource('wallets')
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1387): Model->getDataSource()
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1483): Model->schema()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(1470): Model->hasField('title', false)
+#4 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(907): Model->hasField(Array)
+#5 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Scaffold.php(130): Model->__get('displayField')
+#6 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(535): Scaffold->__construct(Object(WalletController), Object(CakeRequest))
+#7 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(494): Controller->_getScaffold(Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(WalletController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2015-08-31 06:42:40 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:42:40 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:44:29 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:44:29 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:46:08 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:46:08 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:47:45 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:47:45 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:47:47 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:47:47 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 06:54:04 Error: [MissingControllerException] Controller class WalletController could not be found.
+Exception Attributes: array (
+  'class' => 'WalletController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-08-31 06:54:12 Error: [MissingViewException] View file "Wallets/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Wallets/index.ctp',
+)
+Request URL: /sfcoin_v2/wallets
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(WalletsController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 06:54:51 Error: [MissingControllerException] Controller class WalletsController could not be found.
+Exception Attributes: array (
+  'class' => 'WalletsController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/wallets
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-08-31 06:54:53 Error: [MissingViewException] View file "Wallet/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Wallet/index.ctp',
+)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(WalletController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 06:59:24 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 06:59:24 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 07:11:33 Error: Fatal Error (1): Call to a member function find() on null in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 07:11:33 Error: [FatalErrorException] Call to a member function find() on null
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to a membe...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 07:37:21 Error: Fatal Error (4): syntax error, unexpected '=>' (T_DOUBLE_ARROW) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 7]
+2015-08-31 07:37:21 Error: [FatalErrorException] syntax error, unexpected '=>' (T_DOUBLE_ARROW)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 7)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 7, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 7, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
