@@ -277,3 +277,172 @@ Stack Trace:
 #3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-08-31 08:41:05 Error: Fatal Error (4): syntax error, unexpected '$datas' (T_VARIABLE) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 12]
+2015-08-31 08:41:05 Error: [FatalErrorException] syntax error, unexpected '$datas' (T_VARIABLE)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 12)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 08:44:01 Error: Fatal Error (4): syntax error, unexpected '$datas' (T_VARIABLE) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/WalletController.php, line 12]
+2015-08-31 08:44:01 Error: [FatalErrorException] syntax error, unexpected '$datas' (T_VARIABLE)
+Request URL: /sfcoin_v2/wallet
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 12)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 08:45:46 Error: Fatal Error (4): syntax error, unexpected ')' in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 12]
+2015-08-31 08:45:46 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /sfcoin_v2/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 12)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 12, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 08:46:20 Error: [MissingViewException] View file "Sent/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Sent/index.ctp',
+)
+Request URL: /sfcoin_v2/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 08:54:08 Error: [MissingViewException] View file "Sent/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Sent/index.ctp',
+)
+Request URL: /sfcoin_v2/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 08:54:12 Error: [MissingViewException] View file "Sent/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Sent/index.ctp',
+)
+Request URL: /sfcoin_v2/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 08:54:48 Error: [MissingViewException] View file "Sent/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Sent/index.ctp',
+)
+Request URL: /sfcoin_v2/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-08-31 08:55:16 Error: Fatal Error (4): syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';' in [/Applications/MAMP/htdocs/sfcoin_v2/app/View/Sent/index.ctp, line 5]
+2015-08-31 08:55:16 Error: [FatalErrorException] syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ',' or ';'
+Request URL: /sfcoin_v2/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 5)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 08:55:58 Error: [MissingActionException] Action SentController::action() could not be found.
+Exception Attributes: array (
+  'controller' => 'SentController',
+  'action' => 'action',
+)
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-08-31 09:01:22 Error: Fatal Error (4): syntax error, unexpected '->' (T_OBJECT_OPERATOR) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 20]
+2015-08-31 09:01:22 Error: [FatalErrorException] syntax error, unexpected '->' (T_OBJECT_OPERATOR)
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 20)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 20, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 20, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 09:01:49 Error: Fatal Error (1): Class 'Sanitaize' not found in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 19]
+2015-08-31 09:01:49 Error: [FatalErrorException] Class 'Sanitaize' not found
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Class 'Sanitaiz...', '/Applications/M...', 19)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Sanitaiz...', '/Applications/M...', 19, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Class 'Sanitaiz...', '/Applications/M...', 19, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 09:02:34 Error: Fatal Error (1): Class 'Sanitaize' not found in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 20]
+2015-08-31 09:02:34 Error: [FatalErrorException] Class 'Sanitaize' not found
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Class 'Sanitaiz...', '/Applications/M...', 20)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Sanitaiz...', '/Applications/M...', 20, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Class 'Sanitaiz...', '/Applications/M...', 20, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 09:03:01 Error: Fatal Error (1): Call to undefined method Sanitize::strioAll() in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 20]
+2015-08-31 09:03:01 Error: [FatalErrorException] Call to undefined method Sanitize::strioAll()
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/Applications/M...', 20)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/Applications/M...', 20, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/Applications/M...', 20, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 09:32:30 Error: Fatal Error (4): syntax error, unexpected 'array' (T_ARRAY) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 15]
+2015-08-31 09:32:30 Error: [FatalErrorException] syntax error, unexpected 'array' (T_ARRAY)
+Request URL: /sfcoin_v2/sent/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 15)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 15, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 15, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 09:34:44 Error: Fatal Error (4): syntax error, unexpected 'array' (T_ARRAY) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 17]
+2015-08-31 09:34:44 Error: [FatalErrorException] syntax error, unexpected 'array' (T_ARRAY)
+Request URL: /sfcoin_v2/sent/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 17)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 17, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 17, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 10:17:48 Error: Fatal Error (4): syntax error, unexpected ')' in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 21]
+2015-08-31 10:17:48 Error: [FatalErrorException] syntax error, unexpected ')'
+Request URL: /sfcoin_v2/sent/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 21)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 21, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 21, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
