@@ -35,7 +35,7 @@ class SentController extends AppController {
     $user_id = $userdatas[0]['User']['id'];
     $username = $userdatas[0]['User']['username'];
 
-    if($this->request->data['text1']){
+    if(ctype_digit(strval($this->request->data['text1']))){
     //入力データの取得
       $amount = Sanitize::stripAll(
         $this->request->data['text1']);
@@ -64,7 +64,7 @@ class SentController extends AppController {
       $this->set("amount",$amount);
       $this->set("friend",$friend);
     } else {
-      $this->Session->setFlash('データが入力されていません');
+      $this->Session->setFlash('入力値が不正です');
       $this->redirect(['controller'=>'Sent','action'=>'index']);
     }
   }
