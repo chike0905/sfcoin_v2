@@ -2,13 +2,13 @@
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 class SentController extends AppController {
+  public $components = array('Session');
   var $uses = array('Wallet', 'User','Sent','Network');
   public function index(){
     //user_idとusername取得
     $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
     $user_id = $userdatas[0]['User']['id'];
     $username = $userdatas[0]['User']['username'];
-
     $networkdatas = $this->Network->find('all',array('conditions' =>
       array('OR' => array('network.usr_id_1' => $user_id,'network.usr_id_2' => $user_id))
     ));
@@ -30,17 +30,42 @@ class SentController extends AppController {
     $this->set("username",$username);
   }
   public function action(){
+    //user_idとusername取得
+    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
+    $user_id = $userdatas[0]['User']['id'];
+    $username = $userdatas[0]['User']['username'];
+
+    if($this->request->data['text1']){
     //入力データの取得
-    if($this->request->data){
       $amount = Sanitize::stripAll(
         $this->request->data['text1']);
       $friend = Sanitize::stripAll(
         $this->request->data['friend']);
-    } else {
-      $result = "no data.";
-    }
-    $this->set("amount",$amount);
-    $this->set("friend",$friend);
 
+      //送金元wallet
+      $from_wallet = $this->Wallet->find('all',array('conditions' => array('wallet.id' => $user_id)));
+      $from_coin = $from_wallet[0]["Wallet"]["coin"];
+      //送金先wallet
+      $to_wallet = $this->Wallet->find('all',array('conditions' => array('wallet.id' => $friend)));
+      $to_coin = $to_wallet[0]["Wallet"]["coin"];
+
+      //送金処理
+      $from_coin = $from_coin - $amount;
+      $to_coin = $to_coin + $amount;
+
+      $from_data = array("Wallet" =>array('id' => $user_id,'coin' => $from_coin ));
+      $fields = array('coin');
+      $this->Wallet->save($from_data, false, $fields);
+
+      $to_data = array("Wallet" =>array('id' => $friend,'coin' => $to_coin ));
+      $fields = array('coin');
+      $this->Wallet->save($to_data, false, $fields);
+
+      $this->set("amount",$amount);
+      $this->set("friend",$friend);
+    } else {
+      $this->Session->setFlash('データが入力されていません');
+      $this->redirect(['controller'=>'Sent','action'=>'index']);
+    }
   }
 }

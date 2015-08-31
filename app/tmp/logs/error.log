@@ -446,3 +446,104 @@ Stack Trace:
 #3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-08-31 16:11:06 Error: [MissingControllerException] Controller class SampleController could not be found.
+Exception Attributes: array (
+  'class' => 'SampleController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/sample/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-08-31 16:35:40 Error: Fatal Error (4): syntax error, unexpected 'else' (T_ELSE) in [/Applications/MAMP/htdocs/sfcoin_v2/app/View/Sent/action.ctp, line 5]
+2015-08-31 16:35:40 Error: [FatalErrorException] syntax error, unexpected 'else' (T_ELSE)
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 5)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 16:36:25 Error: Fatal Error (4): syntax error, unexpected 'else' (T_ELSE) in [/Applications/MAMP/htdocs/sfcoin_v2/app/View/Sent/action.ctp, line 5]
+2015-08-31 16:36:25 Error: [FatalErrorException] syntax error, unexpected 'else' (T_ELSE)
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 5)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 5, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 16:40:36 Error: Fatal Error (4): syntax error, unexpected '!' in [/Applications/MAMP/htdocs/sfcoin_v2/app/View/Sent/action.ctp, line 3]
+2015-08-31 16:40:36 Error: [FatalErrorException] syntax error, unexpected '!'
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 3)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 3, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 3, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 16:46:34 Error: Fatal Error (64): Cannot use isset() on the result of a function call (you can use "null !== func()" instead) in [/Applications/MAMP/htdocs/sfcoin_v2/app/View/Sent/index.ctp, line 3]
+2015-08-31 16:46:34 Error: [FatalErrorException] Cannot use isset() on the result of a function call (you can use "null !== func()" instead)
+Request URL: /sfcoin_v2/sent/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot use isse...', '/Applications/M...', 3)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot use isse...', '/Applications/M...', 3, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'Cannot use isse...', '/Applications/M...', 3, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 17:01:41 Error: Fatal Error (4): syntax error, unexpected '$userdatas' (T_VARIABLE), expecting function (T_FUNCTION) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 8]
+2015-08-31 17:01:41 Error: [FatalErrorException] syntax error, unexpected '$userdatas' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /sfcoin_v2/sent/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 8)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 8, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 8, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 17:02:07 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php, line 8]
+2015-08-31 17:02:07 Error: [FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE)
+Request URL: /sfcoin_v2/sent/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 8)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 8, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 8, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-08-31 17:05:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'walletid' in 'where clause'
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(460): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(426): DboSource->_execute('SELECT `Wallet`...', Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(668): DboSource->execute('SELECT `Wallet`...', Array, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(1106): DboSource->fetchAll('SELECT `Wallet`...', false)
+#4 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(3022): DboSource->read(Object(Wallet), Array)
+#5 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(2994): Model->_readDataSource('Wallet.coin', Array)
+#6 /Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php(46): Model->find('Wallet.coin', Array)
+#7 [internal function]: SentController->action()
+#8 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(SentController), Array)
+#9 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2015-08-31 17:10:10 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Wallet.walletcoin' in 'field list'
+Request URL: /sfcoin_v2/sent/action
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(460): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(426): DboSource->_execute('SELECT `Wallet`...', Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(668): DboSource->execute('SELECT `Wallet`...', Array, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Datasource/DboSource.php(1106): DboSource->fetchAll('SELECT `Wallet`...', false)
+#4 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(3022): DboSource->read(Object(Wallet), Array)
+#5 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Model/Model.php(2994): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/sfcoin_v2/app/Controller/SentController.php(46): Model->find('all', Array)
+#7 [internal function]: SentController->action()
+#8 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(SentController), Array)
+#9 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
