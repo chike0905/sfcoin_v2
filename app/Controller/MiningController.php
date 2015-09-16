@@ -1,6 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
+App::import('Vendor', 'phpqrcode/qrlib');
 class MiningController extends AppController {
   public $components = array('Session');
   var $uses = array('User','Network','Wallet');
@@ -54,7 +55,9 @@ class MiningController extends AppController {
         //発行量の調節
         $mining_basic = 10;
         $mining_amount = $mining_basic * $distance;
+        $url = "http://localhost/sfcoin_v2/mining/post?usr=".$oppo_data[0]['User']['username'];
 
+        $this->set("url",$url);
         $this->set("amount",$mining_amount);
         $this->set("username",$oppo_data[0]['User']['username']);
         $this->set("id",$oppo_data[0]['User']['id']);
