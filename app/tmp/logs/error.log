@@ -547,3 +547,12 @@ Stack Trace:
 #10 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(SentController), Object(CakeRequest))
 #11 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #12 {main}
+2015-09-16 07:12:35 Error: [MissingControllerException] Controller class MiningController could not be found.
+Exception Attributes: array (
+  'class' => 'MiningController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/mining/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
