@@ -1,2 +1,9 @@
-<h1>データ参照テスト</h1>
-<?php echo $username; ?>(User ID:<?php echo $id?>)の所有コインはhogeSFCoinです。
+<h1>採掘</h1>
+<?php
+  echo $this->Session->flash();
+
+  echo $this->Form->create(false,array('type' => 'post','action'=>'./request'));
+  ?>ログイン名を入力してください<?php
+  echo $this->Form->text('loginname');
+  echo $this->Form->end("採掘コード生成");
+?>
