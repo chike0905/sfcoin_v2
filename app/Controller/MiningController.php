@@ -68,6 +68,13 @@ class MiningController extends AppController {
     }
   }
 
+  public function post(){
+    //user_idとusername取得
+    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
+    $user_id = $userdatas[0]['User']['id'];
+    $username = $userdatas[0]['User']['username'];
+  }
+
   //引数
   //$graph:$array["自分"]["友人"] = costの二次元配列
   //$start:開始点の"自分"
