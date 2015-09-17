@@ -7,16 +7,16 @@ class MiningController extends AppController {
   var $uses = array('User','Network','Wallet');
   public function index(){
     //user_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
   }
 
   public function request(){
     //自身のuser_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
     if(strval($this->request->data['loginname'])){
       //入力データの取得
       $opponent = Sanitize::stripAll(
