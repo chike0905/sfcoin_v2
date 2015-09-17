@@ -814,3 +814,12 @@ Request URL: /sfcoin_v2/users/login
 Stack Trace:
 #0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2015-09-17 05:46:48 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

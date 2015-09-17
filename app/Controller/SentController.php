@@ -6,9 +6,9 @@ class SentController extends AppController {
   var $uses = array('Wallet', 'User','Sent','Network');
   public function index(){
     //user_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
     $networkdatas = $this->Network->find('all',array('conditions' =>
       array('OR' => array('network.usr_id_1' => $user_id,'network.usr_id_2' => $user_id))
     ));
