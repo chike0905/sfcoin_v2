@@ -13,6 +13,10 @@ class MiningController extends AppController {
   }
 
   public function request(){
+
+  }
+
+  public function request(){
     //自身のuser_idとusername取得
     $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
     $user_id = $userdatas[0]['User']['id'];
