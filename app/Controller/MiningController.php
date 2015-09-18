@@ -22,13 +22,14 @@ class MiningController extends AppController {
       $opponent = Sanitize::stripAll(
         $this->request->data['loginname']);
       $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
+      $security = Sanitize::stripAll($this->request->data['security']);
       //ユーザーが存在するかチェック
       if(empty($oppo_data)){
         $this->Session->setFlash('そのログイン名のユーザーはcoinを使用していません');
         $this->redirect(['controller'=>'Mining','action'=>'index']);
       } else {
-        $hash_user = Security::hash($oppo_data[0]['User']['username']);
-        $url = "http://localhost/sfcoin_v2/mining/post?usr=".$hash_user;
+        $secret_user = Security::cipher($oppo_data[0]['User']['username'],$security);
+        $url = "http://localhost/sfcoin_v2/mining/request?usr=".$secret_user;
 
         $this->set("url",$url);
         $this->set("username",$oppo_data[0]['User']['username']);
@@ -42,10 +43,16 @@ class MiningController extends AppController {
     $userdatas = $this->Auth->user();
     $user_id = $userdatas['id'];
     $username = $userdatas['username'];
-    if(strval($this->request->data['loginname'])){
+    //9.18　暗号化されたユーザー名を受け取り、それをminingに渡したい
+    $s_opponent = $this->request->query('usr');
+  }
+
+  public function mining(){
+    if(strval($this->request->data['security'])){
       //入力データの取得
-      $opponent = Sanitize::stripAll(
-        $this->request->data['loginname']);
+      //9.18　暗号化された$s_opponentをうけとって、復号したい
+      $security = Sanitize::stripAll($this->request->data['security']);
+      $opponent = Security::cipher($s_opponent,$secrity);
       $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
       //ユーザーが存在するかチェック
         //user table行数（user 数）の取得
@@ -76,9 +83,7 @@ class MiningController extends AppController {
         //発行量の調節
         $mining_basic = 10;
         $mining_amount = $mining_basic * $distance;
-        $url = "http://localhost/sfcoin_v2/mining/post?usr=".$oppo_data[0]['User']['username'];
 
-        $this->set("url",$url);
         $this->set("amount",$mining_amount);
         $this->set("username",$oppo_data[0]['User']['username']);
         $this->set("id",$oppo_data[0]['User']['id']);
