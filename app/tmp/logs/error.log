@@ -713,3 +713,264 @@ Stack Trace:
 #3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2015-09-17 04:54:48 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 04:54:51 Error: [MissingActionException] Action UserController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UserController',
+  'action' => 'index',
+)
+Request URL: /sfcoin_v2/user
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UserController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-17 04:57:06 Error: [MissingViewException] View file "User/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'User/login.ctp',
+)
+Request URL: /sfcoin_v2/user/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UserController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-09-17 04:57:41 Error: [MissingViewException] View file "User/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'User/login.ctp',
+)
+Request URL: /sfcoin_v2/user/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/View/View.php(470): View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Controller/Controller.php(960): View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(200): Controller->render()
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UserController), Object(CakeRequest))
+#4 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2015-09-17 05:13:21 Error: [MissingActionException] Action UserController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UserController',
+  'action' => 'index',
+)
+Request URL: /sfcoin_v2/user/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UserController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-17 05:18:50 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:28:35 Error: Fatal Error (4): syntax error, unexpected end of file, expecting function (T_FUNCTION) in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/UserController.php, line 36]
+2015-09-17 05:28:35 Error: [FatalErrorException] syntax error, unexpected end of file, expecting function (T_FUNCTION)
+Request URL: /sfcoin_v2/user/add
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/Applications/M...', 36)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/Applications/M...', 36, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/Applications/M...', 36, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-17 05:37:24 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:38:09 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:38:10 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:46:48 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:50:53 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:57:52 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:57:54 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:58:27 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 05:58:47 Error: [MissingActionException] Action UserController::sent() could not be found.
+Exception Attributes: array (
+  'controller' => 'UserController',
+  'action' => 'sent',
+)
+Request URL: /sfcoin_v2/user/sent
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UserController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-17 05:59:07 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 06:01:45 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 06:01:49 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 06:01:58 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 06:01:59 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 06:02:15 Error: [MissingActionException] Action UserController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UserController',
+  'action' => 'index',
+)
+Request URL: /sfcoin_v2/user/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UserController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2015-09-17 06:04:48 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/login/logout
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-17 06:05:00 Error: [MissingControllerException] Controller class UsersController could not be found.
+Exception Attributes: array (
+  'class' => 'UsersController',
+  'plugin' => NULL,
+)
+Request URL: /sfcoin_v2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2015-09-18 08:06:56 Error: Fatal Error (64): Cannot redeclare MiningController::post() in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/MiningController.php, line 95]
+2015-09-18 08:06:56 Error: [FatalErrorException] Cannot redeclare MiningController::post()
+Request URL: /sfcoin_v2/mining/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/Applications/M...', 95)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/Applications/M...', 95, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/Applications/M...', 95, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-18 08:08:02 Error: Fatal Error (64): Cannot redeclare MiningController::post() in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/MiningController.php, line 95]
+2015-09-18 08:08:02 Error: [FatalErrorException] Cannot redeclare MiningController::post()
+Request URL: /sfcoin_v2/mining/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/Applications/M...', 95)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/Applications/M...', 95, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/Applications/M...', 95, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2015-09-18 08:08:04 Error: Fatal Error (64): Cannot redeclare MiningController::post() in [/Applications/MAMP/htdocs/sfcoin_v2/app/Controller/MiningController.php, line 95]
+2015-09-18 08:08:04 Error: [FatalErrorException] Cannot redeclare MiningController::post()
+Request URL: /sfcoin_v2/mining/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Error/ErrorHandler.php(213): ErrorHandler::handleFatalError(64, 'Cannot redeclar...', '/Applications/M...', 95)
+#1 [internal function]: ErrorHandler::handleError(64, 'Cannot redeclar...', '/Applications/M...', 95, Array)
+#2 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(933): call_user_func('ErrorHandler::h...', 64, 'Cannot redeclar...', '/Applications/M...', 95, Array)
+#3 /Applications/MAMP/htdocs/sfcoin_v2/lib/Cake/Core/App.php(906): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

@@ -7,20 +7,16 @@ class MiningController extends AppController {
   var $uses = array('User','Network','Wallet');
   public function index(){
     //user_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
   }
 
-  public function request(){
-
-  }
-
-  public function request(){
+  public function post(){
     //自身のuser_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
     if(strval($this->request->data['loginname'])){
       //入力データの取得
       $opponent = Sanitize::stripAll(
@@ -31,6 +27,27 @@ class MiningController extends AppController {
         $this->Session->setFlash('そのログイン名のユーザーはcoinを使用していません');
         $this->redirect(['controller'=>'Mining','action'=>'index']);
       } else {
+        $hash_user = Security::hash($oppo_data[0]['User']['username']);
+        $url = "http://localhost/sfcoin_v2/mining/post?usr=".$hash_user;
+
+        $this->set("url",$url);
+        $this->set("username",$oppo_data[0]['User']['username']);
+        $this->set("id",$oppo_data[0]['User']['id']);
+      }
+    }
+  }
+
+  public function request(){
+    //自身のuser_idとusername取得
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
+    if(strval($this->request->data['loginname'])){
+      //入力データの取得
+      $opponent = Sanitize::stripAll(
+        $this->request->data['loginname']);
+      $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
+      //ユーザーが存在するかチェック
         //user table行数（user 数）の取得
         $user_num = $this->User->find('count');
 
@@ -65,7 +82,6 @@ class MiningController extends AppController {
         $this->set("amount",$mining_amount);
         $this->set("username",$oppo_data[0]['User']['username']);
         $this->set("id",$oppo_data[0]['User']['id']);
-      }
     } else {
       $this->Session->setFlash('入力値が不正です');
       $this->redirect(['controller'=>'Mining','action'=>'index']);

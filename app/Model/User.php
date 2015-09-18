@@ -1,5 +1,6 @@
 <?php
-App::uses('AppController', 'Controller');
-class User extends AppModel {
+App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
+class User extends AppModel {
 }
