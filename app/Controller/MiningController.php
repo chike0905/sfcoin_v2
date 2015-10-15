@@ -29,6 +29,7 @@ class MiningController extends AppController {
         $this->redirect(['controller'=>'Mining','action'=>'index']);
       } else {
         $secret_user = Security::cipher($oppo_data[0]['User']['username'],$security);
+        $secret_user = urlencode ($secret_user);
         $url = "http://localhost/sfcoin_v2/mining/request?usr=".$secret_user;
 
         $this->set("url",$url);
@@ -45,6 +46,7 @@ class MiningController extends AppController {
     $username = $userdatas['username'];
     //9.18　暗号化されたユーザー名を受け取り、それをminingに渡したい
     $s_opponent = $this->request->query('usr');
+    $this->set("s_oppo",$s_opponent);
   }
 
   public function mining(){
