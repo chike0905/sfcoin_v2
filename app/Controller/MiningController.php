@@ -66,8 +66,15 @@ class MiningController extends AppController {
         $this->Session->setFlash('Mining Codeの生成から30分以内に採掘を行ってください');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
-        $oppoid = $mining_data[0]["Mining"]["myid"];
-        $this->set("oppoid",$oppoid);
+        if($mining_data[0]["Mining"]["active"] == 0){
+          $this->Session->setFlash('このMining Codeでの採掘はすでに行われています');
+          $this->redirect(['controller'=>'mining','action'=>'index']);
+        }else{
+          $oppoid = $mining_data[0]["Mining"]["myid"];
+
+          $this->set("code",$mining_code);
+          $this->set("oppoid",$oppoid);
+        }
       }
     } else {
         $this->Session->setFlash('Mining Codeが不正です');
@@ -82,8 +89,9 @@ class MiningController extends AppController {
     $username = $userdatas['username'];
     if(isset($this->request->data['oppoid'])){
       //入力データの取得
-      $opponent = Sanitize::stripAll(
-        $this->request->data['oppoid']);
+      $opponent = Sanitize::stripAll($this->request->data['oppoid']);
+      $mining_code = Sanitize::stripAll($this->request->data['code']);
+      $mining_id = $this->Mining->find('all',array('fields' =>array('id'),'conditions' => array('mining.authcode' => $mining_code)));
       $oppo_data = $this->User->find('all',array('conditions' => array('user.id' => $opponent)));
       //user table行数（user 数）の取得
       $user_num = $this->User->find('count');
@@ -129,6 +137,11 @@ class MiningController extends AppController {
       $mining = array("Wallet" =>array('id' => $user_id,'coin' => $mycoin));
       $fields = array('coin');
       $this->Wallet->save($mining, false, $fields);
+
+      //マイニングコードの無効化
+      $miningdata = array("Mining" =>array('id' => $mining_id[0]["Mining"]["id"],'active' => false));
+      $fields = array('active');
+      $this->Mining->save($miningdata, false, $fields);
 
       $this->set("amount",$mining_amount);
       $this->set("username",$oppo_data[0]['User']['username']);
