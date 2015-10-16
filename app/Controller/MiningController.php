@@ -28,10 +28,20 @@ class MiningController extends AppController {
         $this->Session->setFlash('そのログイン名のユーザーはcoinを使用していません');
         $this->redirect(['controller'=>'Mining','action'=>'index']);
       } else {
+        //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
         $mining_code = $oppo_data[0]['User']['username'].time();
-        $secret_user = Security::hash($mining_code, 'sha1', true);;
-        $secret_user = urlencode ($secret_user);
-        $url = "http://localhost/sfcoin_v2/mining/request?usr=".$secret_user;
+        $mining_code = Security::hash($mining_code, 'sha1', true);
+        $url = "http://localhost/sfcoin_v2/mining/request?code=".urlencode ($mining_code);
+
+        //miningdataをDBへ保存
+        $miningdata = array("Mining" =>array(
+          'authcode' => $mining_code,
+          'myid' => $user_id ,
+          'oppoid' => $oppo_data[0]['User']['id'],
+          'date' =>date("Y-m-d H:i:s")
+        ));
+        $fields = array('authcode','myid','oppoid','date');
+        $this->Mining->save($miningdata, false, $fields);
 
         $this->set("url",$url);
         $this->set("username",$oppo_data[0]['User']['username']);
