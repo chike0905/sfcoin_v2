@@ -115,6 +115,20 @@ class MiningController extends AppController {
       $mining_basic = 10;
       $mining_amount = $mining_basic * $distance;
 
+      //miningをDBへ保存
+      $oppocoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('wallet.id' => $opponent)));
+      $oppocoin = $oppocoin[0]["Wallet"]["coin"] + $mining_amount;
+
+      $mining = array("Wallet" =>array('id' => $opponent,'coin' => $oppocoin));
+      $fields = array('coin');
+      $this->Wallet->save($mining, false, $fields);
+
+      $mycoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('wallet.id' => $user_id)));
+      $mycoin = $mycoin[0]["Wallet"]["coin"] + $mining_amount;
+
+      $mining = array("Wallet" =>array('id' => $user_id,'coin' => $mycoin));
+      $fields = array('coin');
+      $this->Wallet->save($mining, false, $fields);
 
       $this->set("amount",$mining_amount);
       $this->set("username",$oppo_data[0]['User']['username']);
