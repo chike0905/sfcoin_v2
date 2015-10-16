@@ -22,11 +22,10 @@ class MiningController extends AppController {
       $opponent = Sanitize::stripAll(
         $this->request->data['loginname']);
       $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
-      $security = Sanitize::stripAll($this->request->data['security']);
       //ユーザーが存在するかチェック
       if(empty($oppo_data)){
         $this->Session->setFlash('そのログイン名のユーザーはcoinを使用していません');
-        $this->redirect(['controller'=>'Mining','action'=>'index']);
+        $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
         //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
         $mining_code = $oppo_data[0]['User']['username'].time();
@@ -55,9 +54,17 @@ class MiningController extends AppController {
     $userdatas = $this->Auth->user();
     $user_id = $userdatas['id'];
     $username = $userdatas['username'];
-    //9.18　暗号化されたユーザー名を受け取り、それをminingに渡したい
-    $s_opponent = $this->request->query('usr');
-    $this->set("s_oppo",$s_opponent);
+
+    //miningcodeを受け取りminingdataの取り出し、照合
+    $mining_code = $this->request->query('code');
+    $mining_data = $this->Mining->find('all',array('conditions' => array('mining.authcode' => $mining_code)));
+    //照合
+    if($user_id == $mining_data[0]["Mining"]["oppoid"]){
+      $this->set("data",$mining_data);
+    } else {
+        $this->Session->setFlash('Mining Codeが不正です');
+        $this->redirect(['controller'=>'mining','action'=>'index']);
+    }
   }
 
   public function mining(){

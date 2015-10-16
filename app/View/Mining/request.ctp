@@ -3,3 +3,4 @@
 
 echo $this->Session->flash();
 
+var_dump($data);
