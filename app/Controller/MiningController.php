@@ -17,14 +17,14 @@ class MiningController extends AppController {
     $userdatas = $this->Auth->user();
     $user_id = $userdatas['id'];
     $username = $userdatas['username'];
-    if(strval($this->request->data['loginname'])){
+    if(isset($this->request->data['loginname'])){
       //入力データの取得
       $opponent = Sanitize::stripAll(
         $this->request->data['loginname']);
       $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
       //ユーザーが存在するかチェック
       if(empty($oppo_data)){
-        $this->Session->setFlash('そのログイン名のユーザーはcoinを使用していません');
+        $this->Session->setFlash('入力値が不正です');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
         //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
@@ -60,7 +60,8 @@ class MiningController extends AppController {
     $mining_data = $this->Mining->find('all',array('conditions' => array('mining.authcode' => $mining_code)));
     //照合
     if($user_id == $mining_data[0]["Mining"]["oppoid"]){
-      $this->set("data",$mining_data);
+      $oppoid = $mining_data[0]["Mining"]["myid"];
+      $this->set("oppoid",$oppoid);
     } else {
         $this->Session->setFlash('Mining Codeが不正です');
         $this->redirect(['controller'=>'mining','action'=>'index']);
@@ -68,49 +69,38 @@ class MiningController extends AppController {
   }
 
   public function mining(){
-    if(strval($this->request->data['security'])){
-      //入力データの取得
-      //9.18　暗号化された$s_opponentをうけとって、復号したい
-      $security = Sanitize::stripAll($this->request->data['security']);
-      $opponent = Security::cipher($s_opponent,$secrity);
-      $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
-      //ユーザーが存在するかチェック
-        //user table行数（user 数）の取得
-        $user_num = $this->User->find('count');
+    //user table行数（user 数）の取得
+    $user_num = $this->User->find('count');
 
-        for($i = 1; $i <= $user_num; $i++){
-          //友人リストの取得
-          $friend_lists = $this->Network->find('all',array(
-            'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
-            'conditions' => array(
-              'OR' => array('network.usr_id_1' => $i,
-              'network.usr_id_2' => $i
-            )
-          )
-        ));
-          foreach($friend_lists as $list){
-            if($list["Network"]["usr_id_1"] == $i){
-              $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
-              $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
-            } else if($list["Network"]["usr_id_2"] == $i){
-              $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
-              $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
-            }
-          }
+    for($i = 1; $i <= $user_num; $i++){
+      //友人リストの取得
+      $friend_lists = $this->Network->find('all',array(
+        'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
+        'conditions' => array(
+          'OR' => array('network.usr_id_1' => $i,
+          'network.usr_id_2' => $i
+        )
+      )
+    ));
+      foreach($friend_lists as $list){
+        if($list["Network"]["usr_id_1"] == $i){
+          $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
+          $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
+        } else if($list["Network"]["usr_id_2"] == $i){
+          $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
+          $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
         }
-        $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
-
-        //発行量の調節
-        $mining_basic = 10;
-        $mining_amount = $mining_basic * $distance;
-
-        $this->set("amount",$mining_amount);
-        $this->set("username",$oppo_data[0]['User']['username']);
-        $this->set("id",$oppo_data[0]['User']['id']);
-    } else {
-      $this->Session->setFlash('入力値が不正です');
-      $this->redirect(['controller'=>'Mining','action'=>'index']);
+      }
     }
+    $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
+
+    //発行量の調節
+    $mining_basic = 10;
+    $mining_amount = $mining_basic * $distance;
+
+    $this->set("amount",$mining_amount);
+    $this->set("username",$oppo_data[0]['User']['username']);
+    $this->set("id",$oppo_data[0]['User']['id']);
   }
 
   //引数
