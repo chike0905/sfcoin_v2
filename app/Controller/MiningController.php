@@ -60,8 +60,15 @@ class MiningController extends AppController {
     $mining_data = $this->Mining->find('all',array('conditions' => array('mining.authcode' => $mining_code)));
     //照合
     if($user_id == $mining_data[0]["Mining"]["oppoid"]){
-      $oppoid = $mining_data[0]["Mining"]["myid"];
-      $this->set("oppoid",$oppoid);
+      //miningcode30分以内に実行させたか判定
+      $now = date("Y-m-d H:i:s",strtotime("- 30 minute"));
+      if(strtotime($now) > strtotime($mining_data[0]["Mining"]["date"])){
+        $this->Session->setFlash('Mining Codeの生成から30分以内に採掘を行ってください');
+        $this->redirect(['controller'=>'mining','action'=>'index']);
+      } else {
+        $oppoid = $mining_data[0]["Mining"]["myid"];
+        $this->set("oppoid",$oppoid);
+      }
     } else {
         $this->Session->setFlash('Mining Codeが不正です');
         $this->redirect(['controller'=>'mining','action'=>'index']);
@@ -91,6 +98,7 @@ class MiningController extends AppController {
           )
         )
       ));
+        //ネットワーク行列を生成
         foreach($friend_lists as $list){
           if($list["Network"]["usr_id_1"] == $i){
             $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
@@ -106,6 +114,7 @@ class MiningController extends AppController {
       //発行量の調節
       $mining_basic = 10;
       $mining_amount = $mining_basic * $distance;
+
 
       $this->set("amount",$mining_amount);
       $this->set("username",$oppo_data[0]['User']['username']);
