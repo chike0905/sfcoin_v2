@@ -69,38 +69,48 @@ class MiningController extends AppController {
   }
 
   public function mining(){
-    //user table行数（user 数）の取得
-    $user_num = $this->User->find('count');
+    //自身のuser_idとusername取得
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
+    if(isset($this->request->data['oppoid'])){
+      //入力データの取得
+      $opponent = Sanitize::stripAll(
+        $this->request->data['oppoid']);
+      $oppo_data = $this->User->find('all',array('conditions' => array('user.id' => $opponent)));
+      //user table行数（user 数）の取得
+      $user_num = $this->User->find('count');
 
-    for($i = 1; $i <= $user_num; $i++){
-      //友人リストの取得
-      $friend_lists = $this->Network->find('all',array(
-        'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
-        'conditions' => array(
-          'OR' => array('network.usr_id_1' => $i,
-          'network.usr_id_2' => $i
+      for($i = 1; $i <= $user_num; $i++){
+        //友人リストの取得
+        $friend_lists = $this->Network->find('all',array(
+          'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
+          'conditions' => array(
+            'OR' => array('network.usr_id_1' => $i,
+            'network.usr_id_2' => $i
+          )
         )
-      )
-    ));
-      foreach($friend_lists as $list){
-        if($list["Network"]["usr_id_1"] == $i){
-          $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
-          $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
-        } else if($list["Network"]["usr_id_2"] == $i){
-          $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
-          $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
+      ));
+        foreach($friend_lists as $list){
+          if($list["Network"]["usr_id_1"] == $i){
+            $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
+            $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
+          } else if($list["Network"]["usr_id_2"] == $i){
+            $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
+            $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
+          }
         }
       }
+      $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
+
+      //発行量の調節
+      $mining_basic = 10;
+      $mining_amount = $mining_basic * $distance;
+
+      $this->set("amount",$mining_amount);
+      $this->set("username",$oppo_data[0]['User']['username']);
+      $this->set("id",$oppo_data[0]['User']['id']);
     }
-    $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
-
-    //発行量の調節
-    $mining_basic = 10;
-    $mining_amount = $mining_basic * $distance;
-
-    $this->set("amount",$mining_amount);
-    $this->set("username",$oppo_data[0]['User']['username']);
-    $this->set("id",$oppo_data[0]['User']['id']);
   }
 
   //引数
