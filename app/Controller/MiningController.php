@@ -4,7 +4,7 @@ App::uses('Sanitize', 'Utility');
 App::import('Vendor', 'phpqrcode/qrlib');
 class MiningController extends AppController {
   public $components = array('Session');
-  var $uses = array('User','Network','Wallet');
+  var $uses = array('User','Network','Wallet','Mining');
   public function index(){
     //user_idとusername取得
     $userdatas = $this->Auth->user();
@@ -28,7 +28,8 @@ class MiningController extends AppController {
         $this->Session->setFlash('そのログイン名のユーザーはcoinを使用していません');
         $this->redirect(['controller'=>'Mining','action'=>'index']);
       } else {
-        $secret_user = Security::cipher($oppo_data[0]['User']['username'],$security);
+        $mining_code = $oppo_data[0]['User']['username'].time();
+        $secret_user = Security::hash($mining_code, 'sha1', true);;
         $secret_user = urlencode ($secret_user);
         $url = "http://localhost/sfcoin_v2/mining/request?usr=".$secret_user;
 
