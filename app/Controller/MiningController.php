@@ -4,7 +4,7 @@ App::uses('Sanitize', 'Utility');
 App::import('Vendor', 'phpqrcode/qrlib');
 class MiningController extends AppController {
   public $components = array('Session');
-  var $uses = array('User','Network','Wallet','Mining');
+  public $uses = array('User','Network','Wallet','Mining');
   public function index(){
     //user_idとusername取得
     $userdatas = $this->Auth->user();
