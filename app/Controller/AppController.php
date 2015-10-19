@@ -32,7 +32,6 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
   public $components = array(
-    'DebugKit.Toolbar',
     'Session',
     'Auth' => array(
       'loginRedirect' => array('controller' => 'sent', 'action' => 'index'),
@@ -40,4 +39,5 @@ class AppController extends Controller {
       'loginAction' => array('controller' => 'user', 'action' => 'login')
     )
   );
+  public $layout = "hoge";
 }
