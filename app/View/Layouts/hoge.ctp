@@ -1,5 +1,5 @@
 <?php
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'SFCoin');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
@@ -8,8 +8,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <?php echo $this->Html->charset(); ?>
     <title>
       <?php echo $cakeDescription; ?>
-      <?php echo $this->fetch('title'); ?>
     </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <?php
       echo $this->Html->meta('icon');
       echo $this->Html->css('basscss');
