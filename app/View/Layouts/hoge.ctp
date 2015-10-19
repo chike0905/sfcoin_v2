@@ -18,8 +18,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
       echo $this->fetch('script');
     ?>
   </head>
-  <body>
+  <body class="white bg-black m2">
       <header>
+      <?php echo $this->Html->image('rogo.png',array('alt' => 'SFCoin'))?>
       </header>
       <article>
         <?php echo $this->Session->flash(); ?>
