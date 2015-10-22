@@ -12,6 +12,10 @@ nbproject/*
 /app/webroot/js/packed/*
 !app/webroot/js/packed/.htaccess
 
+#swp
+*~
+*.swp
+
 # MAC
 .DS_Store
 
