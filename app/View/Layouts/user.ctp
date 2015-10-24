@@ -1,4 +1,4 @@
-<!--User認証後用レイアウト-->
+<!--User認証用レイアウト-->
 <?php
 $cakeDescription = __d('cake_dev', 'SFCoin');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
@@ -26,17 +26,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
       <?php
       echo $this->Html->image('rogo.png',array(
         'alt' => 'SFCoin',
-        'class' => 'col-5 left'));?>
-      <div class="relative inline-block right">
-        <input type="button" value="&#9662;" class="btn btn-primary black bg-white" id="menu">
-        <div class="fixed top-0 right-0 bottom-0 left-0" style="display:none;"></div>
-        <div class="absolute right-0 nowrap black bg-white rounded menu" style="display:none;">
-          <a href="./sent" class="btn block">Sent</a>
-          <a href="./mining" class="btn block">Mining</a>
-          <a href="./setting" class="btn block">Setting</a>
-          <a href="./user/logout" class="btn block">Logout</a>
-        </div>
-      </div>
+        'class' => 'col-12'));?>
       </header>
       <article>
         <?php echo $this->Session->flash(); ?>

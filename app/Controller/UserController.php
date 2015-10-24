@@ -1,5 +1,6 @@
 <?php
 class UserController extends AppController {
+  public $layout = "user";
   public function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('login', 'add');
