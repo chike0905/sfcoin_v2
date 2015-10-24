@@ -26,19 +26,67 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
       <?php
       echo $this->Html->image('rogo.png',array(
         'alt' => 'SFCoin',
-        'class' => 'col-5 left'));?>
+        'class' => 'col-6 left'));?>
       <div class="relative inline-block right">
         <input type="button" value="&#9662;" class="btn btn-primary black bg-white" id="menu">
         <div class="fixed top-0 right-0 bottom-0 left-0" style="display:none;"></div>
-        <div class="absolute right-0 nowrap black bg-white rounded menu" style="display:none;">
-          <a href="./sent" class="btn block">Sent</a>
-          <a href="./mining" class="btn block">Mining</a>
-          <a href="./setting" class="btn block">Setting</a>
-          <a href="./user/logout" class="btn block">Logout</a>
+        <div class="absolute right-0 nowrap black bg-white rounded  menu" style="display:none;">
+          <?php
+             echo $this->Html->link(
+                    'wallet',
+                    array(
+                      'controller' => 'Wallet',
+                      'action' => 'index'
+                    ),
+                    array(
+                      'class' => 'btn block'
+                    )
+                  );
+             echo $this->Html->link(
+                    'Sent',
+                    array(
+                      'controller' => 'Sent',
+                      'action' => 'index'
+                    ),
+                    array(
+                      'class' => 'btn block'
+                    )
+                  );
+             echo $this->Html->link(
+                    'Mining',
+                    array(
+                      'controller' => 'Mining',
+                      'action' => 'index'
+                    ),
+                    array(
+                      'class' => 'btn block'
+                    )
+                  );
+             echo $this->Html->link(
+                    'Setting',
+                    array(
+                      'controller' => 'Setting',
+                      'action' => 'index'
+                    ),
+                    array(
+                      'class' => 'btn block'
+                    )
+                  );
+             echo $this->Html->link(
+                    'Logout',
+                    array(
+                      'controller' => 'User',
+                      'action' => 'logout'
+                    ),
+                    array(
+                      'class' => 'btn block'
+                    )
+                  );
+          ?>
         </div>
       </div>
       </header>
-      <article>
+      <article class="py4">
         <?php echo $this->Session->flash(); ?>
         <?php echo $this->fetch('content'); ?>
       </article>
