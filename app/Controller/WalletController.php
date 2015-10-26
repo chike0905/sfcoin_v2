@@ -5,9 +5,10 @@ class WalletController extends AppController {
   var $uses = array('Wallet', 'User', 'Sent');
   public function index(){
     //user_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
+
     //保有coinの取得
     $datas = $this->Wallet->find('all',array('conditions' => array('Wallet.id' => $user_id)));
     $coin = $datas[0]['Wallet']['coin'];
