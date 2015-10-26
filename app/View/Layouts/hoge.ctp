@@ -33,7 +33,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <div class="absolute right-0 nowrap black bg-white rounded  menu" style="display:none;">
           <?php
              echo $this->Html->link(
-                    'wallet',
+                    'Wallet',
                     array(
                       'controller' => 'Wallet',
                       'action' => 'index'
