@@ -1,4 +1,4 @@
-<p class="h2">送金</p>
+<p class="h3">送金</p>
 <?php
 echo $this->Session->flash();
 
