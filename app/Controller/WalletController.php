@@ -14,8 +14,20 @@ class WalletController extends AppController {
 
     //送金履歴の取得
     $todatas = $this->Sent->find('all',array('conditions' => array('Sent.from_id' => $user_id)));
+    for($i = 0;$i < count($todatas);$i++ ){
+      $touser = $this->User->find('all',array('conditions' => array('User.id' => $todatas[$i]['Sent']['to_id']),
+                                              'fields' => array('username'))
+                                 );
+      $todatas[$i]['Sent']['to_id'] = $touser[0]['User']['username'];
+    }
     //着金履歴
     $getdatas = $this->Sent->find('all',array('conditions' => array('Sent.to_id' => $user_id)));
+    for($i = 0;$i < count($getdatas);$i++ ){
+      $getuser = $this->User->find('all',array('conditions' => array('User.id' => $getdatas[$i]['Sent']['from_id']),
+                                              'fields' => array('username'))
+                                 );
+      $getdatas[$i]['Sent']['to_id'] = $getuser[0]['User']['username'];
+    }
 
     //データ受け渡し
     $this->set("coin",$coin);
