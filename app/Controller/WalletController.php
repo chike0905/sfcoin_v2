@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 class WalletController extends AppController {
   //public $scaffold;
-  var $uses = array('Wallet', 'User');
+  var $uses = array('Wallet', 'User', 'Sent');
   public function index(){
     //user_idとusername取得
     $userdatas = $this->User->find('all',array('conditions' => array('user.id' => 2)));
@@ -12,9 +12,16 @@ class WalletController extends AppController {
     $datas = $this->Wallet->find('all',array('conditions' => array('Wallet.id' => $user_id)));
     $coin = $datas[0]['Wallet']['coin'];
 
+    //送金履歴の取得
+    $todatas = $this->Sent->find('all',array('conditions' => array('Sent.from_id' => $user_id)));
+    //着金履歴
+    $getdatas = $this->Sent->find('all',array('conditions' => array('Sent.to_id' => $user_id)));
+
     //データ受け渡し
     $this->set("coin",$coin);
     $this->set("id",$user_id);
     $this->set("username",$username);
+    $this->set("todata",$todatas);
+    $this->set("getdata",$getdatas);
   }
 }
