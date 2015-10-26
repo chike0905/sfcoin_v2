@@ -22,6 +22,9 @@ nbproject/*
 # Windows
 Thumbs.db
 
+#qrcode
+/vendors/phpqrcode
+
 # Eclipse project files
 /.cache
 .project

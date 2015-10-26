@@ -1,2 +1,16 @@
-<h1>データ参照テスト</h1>
-<?php echo $username; ?>(User ID:<?php echo $id?>)の所有コインは<?php echo $coin; ?>SFCoinです。
+<p class="h3">財布</p>
+<?php echo $username; ?>
+<table class="center">
+  <thead>
+    <tr>
+      <th>所有コイン数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="h3 mr1"><?php echo $coin; ?></span>SFCoin
+      </td>
+    </tr>
+  </tbody>
+</table>
