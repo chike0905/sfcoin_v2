@@ -61,6 +61,11 @@ class SentController extends AppController {
       $fields = array('coin');
       $this->Wallet->save($to_data, false, $fields);
 
+      //送金データをDBへ挿入
+      $sentdata = array("Sent" => array('from_id' => $user_id ,'to_id' => $friend ,'sent' => $amount));
+      $fields = array('from_id','to_id','sent');
+      $this->Sent->save($sentdata, false, $fields);
+
       $this->set("amount",$amount);
       $this->set("friend",$friend);
     } else {
