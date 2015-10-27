@@ -21,6 +21,7 @@ class WalletController extends AppController {
                                  );
       $todatas[$i]['Sent']['to_id'] = $touser[0]['User']['username'];
     }
+
     //着金履歴
     $getdatas = $this->Sent->find('all',array('conditions' => array('Sent.to_id' => $user_id)));
     for($i = 0;$i < count($getdatas);$i++ ){
