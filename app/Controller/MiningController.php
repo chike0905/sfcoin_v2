@@ -32,14 +32,45 @@ class MiningController extends AppController {
         $mining_code = Security::hash($mining_code, 'sha1', true);
         $url = "http://localhost/sfcoin_v2/mining/request?code=".urlencode ($mining_code);
 
+        //user table行数（user 数）の取得
+        $user_num = $this->User->find('count');
+
+        for($i = 1; $i <= $user_num; $i++){
+          //友人リストの取得
+          $friend_lists = $this->Network->find('all',array(
+            'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
+            'conditions' => array(
+              'OR' => array('network.usr_id_1' => $i,
+              'network.usr_id_2' => $i
+            )
+          )));
+          //ネットワーク行列を生成
+          foreach($friend_lists as $list){
+            if($list["Network"]["usr_id_1"] == $i){
+              $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
+              $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
+            } else if($list["Network"]["usr_id_2"] == $i){
+              $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
+              $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
+            }
+          }
+        }
+        $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
+
+        //発行量の調節
+        $mining_basic = 10;
+        $mining_amount = $mining_basic * $distance;
+
         //miningdataをDBへ保存
         $miningdata = array("Mining" =>array(
           'authcode' => $mining_code,
           'myid' => $user_id ,
           'oppoid' => $oppo_data[0]['User']['id'],
-          'date' =>date("Y-m-d H:i:s")
+          'date' =>date("Y-m-d H:i:s"),
+          'amount' => $mining_amount
         ));
-        $fields = array('authcode','myid','oppoid','date');
+
+        $fields = array('authcode','myid','oppoid','date','amount');
         $this->Mining->save($miningdata, false, $fields);
 
         $this->set("url",$url);
@@ -93,35 +124,6 @@ class MiningController extends AppController {
       $mining_code = Sanitize::stripAll($this->request->data['code']);
       $mining_id = $this->Mining->find('all',array('fields' =>array('id'),'conditions' => array('mining.authcode' => $mining_code)));
       $oppo_data = $this->User->find('all',array('conditions' => array('user.id' => $opponent)));
-      //user table行数（user 数）の取得
-      $user_num = $this->User->find('count');
-
-      for($i = 1; $i <= $user_num; $i++){
-        //友人リストの取得
-        $friend_lists = $this->Network->find('all',array(
-          'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
-          'conditions' => array(
-            'OR' => array('network.usr_id_1' => $i,
-            'network.usr_id_2' => $i
-          )
-        )
-      ));
-        //ネットワーク行列を生成
-        foreach($friend_lists as $list){
-          if($list["Network"]["usr_id_1"] == $i){
-            $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
-            $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
-          } else if($list["Network"]["usr_id_2"] == $i){
-            $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
-            $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
-          }
-        }
-      }
-      $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
-
-      //発行量の調節
-      $mining_basic = 10;
-      $mining_amount = $mining_basic * $distance;
 
       //miningをDBへ保存
       $oppocoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('wallet.id' => $opponent)));
@@ -137,6 +139,13 @@ class MiningController extends AppController {
       $mining = array("Wallet" =>array('id' => $user_id,'coin' => $mycoin));
       $fields = array('coin');
       $this->Wallet->save($mining, false, $fields);
+
+      //ネットワーク距離の変更
+      if($link[$user_id][$oppo[0]['User']['id']]){
+        
+      }else{
+        
+      }
 
       //マイニングコードの無効化
       $miningdata = array("Mining" =>array('id' => $mining_id[0]["Mining"]["id"],'active' => false));
