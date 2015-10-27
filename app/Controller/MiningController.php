@@ -122,7 +122,11 @@ class MiningController extends AppController {
       //入力データの取得
       $opponent = Sanitize::stripAll($this->request->data['oppoid']);
       $mining_code = Sanitize::stripAll($this->request->data['code']);
-      $mining_id = $this->Mining->find('all',array('fields' =>array('id'),'conditions' => array('mining.authcode' => $mining_code)));
+      $miningdata = $this->Mining->find('all',array('fields' =>array('id','amount'),
+                                                    'conditions' => array('mining.authcode' => $mining_code)));
+      $mining_id = $miningdata[0]['Mining']['id'];
+      $mining_amount = $miningdata[0]['Mining']['amount'];
+
       $oppo_data = $this->User->find('all',array('conditions' => array('user.id' => $opponent)));
 
       //miningをDBへ保存
@@ -140,15 +144,9 @@ class MiningController extends AppController {
       $fields = array('coin');
       $this->Wallet->save($mining, false, $fields);
 
-      //ネットワーク距離の変更
-      if($link[$user_id][$oppo[0]['User']['id']]){
-        
-      }else{
-        
-      }
 
       //マイニングコードの無効化
-      $miningdata = array("Mining" =>array('id' => $mining_id[0]["Mining"]["id"],'active' => false));
+      $miningdata = array("Mining" =>array('id' => $mining_id,'active' => false));
       $fields = array('active');
       $this->Mining->save($miningdata, false, $fields);
 
