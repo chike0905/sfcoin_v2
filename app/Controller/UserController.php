@@ -1,6 +1,7 @@
 <?php
 class UserController extends AppController {
   public $layout = "user";
+  public $uses = array('User','Wallet');
   public function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('login', 'add');
@@ -25,8 +26,16 @@ class UserController extends AppController {
       $this->request->data['User']['pass_check'] = AuthComponent::password($this->request->data['User']['pass_check']);
       //入力したパスワートとパスワードチェックの値が一致
       if($this->request->data['User']['pass_check'] === $this->request->data['User']['password']){
-        $this->User->create();//ユーザーの作成
+        //$this->User->create();//ユーザーの作成
         $mse = ($this->User->save($this->request->data))? '新規ユーザーを追加しました' : '登録できませんでした。やり直して下さい';
+        $newuserdata = $this->User->find('all',array(
+                                          'conditions' =>array(
+                                            'User.username' => $this->request->data['User']['username']
+                                          )
+                                        ));
+
+        $data = array("Wallet" => array("coin" => 0));
+        $this->Wallet->save($data);
         $this->Session->setFlash(__($mse));
       }else{
         $this->Session->setFlash(__('パスワード確認の値が一致しません．'));
