@@ -144,7 +144,6 @@ class MiningController extends AppController {
       $fields = array('coin');
       $this->Wallet->save($mining, false, $fields);
 
-
       //マイニングコードの無効化
       $miningdata = array("Mining" =>array('id' => $mining_id,'active' => false));
       $fields = array('active');
