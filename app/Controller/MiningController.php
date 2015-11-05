@@ -55,8 +55,12 @@ class MiningController extends AppController {
             }
           }
         }
-        $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
-
+        //自分または相手がネットワークに所属しているかどうか
+        if(empty($link[$oppo_data[0]['User']['id']]) || empty($link[$user_id])){
+          $distance = 100;
+        } else {
+          $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
+        }
         //発行量の調節
         $mining_basic = 10;
         $mining_amount = $mining_basic * $distance;
