@@ -71,10 +71,11 @@ class MiningController extends AppController {
           'myid' => $user_id ,
           'oppoid' => $oppo_data[0]['User']['id'],
           'date' =>date("Y-m-d H:i:s"),
+          'distance' => $distance,
           'amount' => $mining_amount
         ));
 
-        $fields = array('authcode','myid','oppoid','date','amount');
+        $fields = array('authcode','myid','oppoid','date','distance','amount');
         $this->Mining->save($miningdata, false, $fields);
 
         $this->set("url",$url);
@@ -126,7 +127,7 @@ class MiningController extends AppController {
       //入力データの取得
       $opponent = Sanitize::stripAll($this->request->data['oppoid']);
       $mining_code = Sanitize::stripAll($this->request->data['code']);
-      $miningdata = $this->Mining->find('all',array('fields' =>array('id','amount'),
+      $miningdata = $this->Mining->find('all',array('fields' =>array('id','amount','distance'),
                                                     'conditions' => array('mining.authcode' => $mining_code)));
       $mining_id = $miningdata[0]['Mining']['id'];
       $mining_amount = $miningdata[0]['Mining']['amount'];
@@ -152,6 +153,44 @@ class MiningController extends AppController {
       $miningdata = array("Mining" =>array('id' => $mining_id,'active' => false));
       $fields = array('active');
       $this->Mining->save($miningdata, false, $fields);
+
+      //距離の変更
+      //2015.11.6
+      //$miningdata[0]['Mining']['distance']がnullになる
+      //130行目呼び出しのミスか？
+      //要確認
+      var_dump($miningdata[0]['Mining']['distance']);
+      if($miningdata[0]['Mining']['distance'] > 10){
+        if($miningdata[0]['Mining']['distance'] == 100){
+          $data = array("Network" => array(
+            'usr_id_1' => $miningdata[0]['Mining']['myid'],
+            'usr_id_2' => $miningdata[0]['Mining']['oppoid'],
+            'cost' => $miningdata[0]['Mining']['distance']
+          ));
+          $feilds = array('usr_id_1','usr_id_2','cost');
+        } else {
+          $network =  $this->Network->find('all',array('fields' =>array('id') ,
+            'conditions' => array(
+              'OR' => array(
+                array(
+                  'network.usr_id_1' => $miningdata[0]['Mining']['myid'],
+                  'network.usr_id_2' => $miningdata[0]['Mining']['oppoid']
+                ),
+                array(
+                  'network.usr_id_1' => $miningdata[0]['Mining']['oppoid'],
+                  'network.usr_id_2' => $miningdata[0]['Mining']['myid']
+                )
+              )
+            )));
+          $new_distance = $miningdata[0]['Mining']['distance'] - 10;
+          $data = array("Network" => array(
+            'id' => $network[0]['Network']['id'],
+            'cost' => $new_distance
+          ));
+          $feilds = array('cost');
+        }
+        $this->Network->save($data, false, $fields);
+      }
 
       $this->set("amount",$mining_amount);
       $this->set("username",$oppo_data[0]['User']['username']);
