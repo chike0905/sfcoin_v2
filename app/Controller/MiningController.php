@@ -127,7 +127,7 @@ class MiningController extends AppController {
       //入力データの取得
       $opponent = Sanitize::stripAll($this->request->data['oppoid']);
       $mining_code = Sanitize::stripAll($this->request->data['code']);
-      $miningdata = $this->Mining->find('all',array('fields' =>array('id','amount','distance'),
+      $miningdata = $this->Mining->find('all',array('fields' =>array('id','amount','distance','myid','oppoid'),
                                                     'conditions' => array('mining.authcode' => $mining_code)));
       $mining_id = $miningdata[0]['Mining']['id'];
       $mining_amount = $miningdata[0]['Mining']['amount'];
@@ -150,16 +150,11 @@ class MiningController extends AppController {
       $this->Wallet->save($mining, false, $fields);
 
       //マイニングコードの無効化
-      $miningdata = array("Mining" =>array('id' => $mining_id,'active' => false));
+      $miningactiv = array("Mining" =>array('id' => $mining_id,'active' => false));
       $fields = array('active');
-      $this->Mining->save($miningdata, false, $fields);
+      $this->Mining->save($miningactiv, false, $fields);
 
       //距離の変更
-      //2015.11.6
-      //$miningdata[0]['Mining']['distance']がnullになる
-      //130行目呼び出しのミスか？
-      //要確認
-      var_dump($miningdata[0]['Mining']['distance']);
       if($miningdata[0]['Mining']['distance'] > 10){
         if($miningdata[0]['Mining']['distance'] == 100){
           $data = array("Network" => array(
@@ -187,7 +182,7 @@ class MiningController extends AppController {
             'id' => $network[0]['Network']['id'],
             'cost' => $new_distance
           ));
-          $feilds = array('cost');
+          $fields = array('cost');
         }
         $this->Network->save($data, false, $fields);
       }
