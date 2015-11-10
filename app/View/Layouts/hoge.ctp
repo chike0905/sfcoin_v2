@@ -63,16 +63,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     )
                   );
              echo $this->Html->link(
-                    'Setting',
-                    array(
-                      'controller' => 'Setting',
-                      'action' => 'index'
-                    ),
-                    array(
-                      'class' => 'btn block'
-                    )
-                  );
-             echo $this->Html->link(
                     'Logout',
                     array(
                       'controller' => 'User',
