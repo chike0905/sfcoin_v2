@@ -21,7 +21,7 @@ class MiningController extends AppController {
       //入力データの取得
       $opponent = Sanitize::stripAll(
         $this->request->data['loginname']);
-      $oppo_data = $this->User->find('all',array('conditions' => array('user.username' => $opponent)));
+      $oppo_data = $this->User->find('all',array('conditions' => array('User.username' => $opponent)));
       //ユーザーが存在するかチェック
       if(empty($oppo_data)){
         $this->Session->setFlash('入力値が不正です');
@@ -38,10 +38,10 @@ class MiningController extends AppController {
         for($i = 1; $i <= $user_num; $i++){
           //友人リストの取得
           $friend_lists = $this->Network->find('all',array(
-            'fields' => array('network.usr_id_1','network.usr_id_2','network.cost'),
+            'fields' => array('Network.usr_id_1','Network.usr_id_2','Network.cost'),
             'conditions' => array(
-              'OR' => array('network.usr_id_1' => $i,
-              'network.usr_id_2' => $i
+              'OR' => array('Network.usr_id_1' => $i,
+              'Network.usr_id_2' => $i
             )
           )));
           //ネットワーク行列を生成
@@ -93,7 +93,7 @@ class MiningController extends AppController {
 
     //miningcodeを受け取りminingdataの取り出し、照合
     $mining_code = $this->request->query('code');
-    $mining_data = $this->Mining->find('all',array('conditions' => array('mining.authcode' => $mining_code)));
+    $mining_data = $this->Mining->find('all',array('conditions' => array('Mining.authcode' => $mining_code)));
     //照合
     if($user_id == $mining_data[0]["Mining"]["oppoid"]){
       //miningcode30分以内に実行させたか判定
@@ -128,21 +128,21 @@ class MiningController extends AppController {
       $opponent = Sanitize::stripAll($this->request->data['oppoid']);
       $mining_code = Sanitize::stripAll($this->request->data['code']);
       $miningdata = $this->Mining->find('all',array('fields' =>array('id','amount','distance','myid','oppoid'),
-                                                    'conditions' => array('mining.authcode' => $mining_code)));
+                                                    'conditions' => array('Mining.authcode' => $mining_code)));
       $mining_id = $miningdata[0]['Mining']['id'];
       $mining_amount = $miningdata[0]['Mining']['amount'];
 
       $oppo_data = $this->User->find('all',array('conditions' => array('user.id' => $opponent)));
 
       //miningをDBへ保存
-      $oppocoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('wallet.id' => $opponent)));
+      $oppocoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('Wallet.id' => $opponent)));
       $oppocoin = $oppocoin[0]["Wallet"]["coin"] + $mining_amount;
 
       $mining = array("Wallet" =>array('id' => $opponent,'coin' => $oppocoin));
       $fields = array('coin');
       $this->Wallet->save($mining, false, $fields);
 
-      $mycoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('wallet.id' => $user_id)));
+      $mycoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('Wallet.id' => $user_id)));
       $mycoin = $mycoin[0]["Wallet"]["coin"] + $mining_amount;
 
       $mining = array("Wallet" =>array('id' => $user_id,'coin' => $mycoin));
@@ -168,12 +168,12 @@ class MiningController extends AppController {
             'conditions' => array(
               'OR' => array(
                 array(
-                  'network.usr_id_1' => $miningdata[0]['Mining']['myid'],
-                  'network.usr_id_2' => $miningdata[0]['Mining']['oppoid']
+                  'Network.usr_id_1' => $miningdata[0]['Mining']['myid'],
+                  'Network.usr_id_2' => $miningdata[0]['Mining']['oppoid']
                 ),
                 array(
-                  'network.usr_id_1' => $miningdata[0]['Mining']['oppoid'],
-                  'network.usr_id_2' => $miningdata[0]['Mining']['myid']
+                  'Network.usr_id_1' => $miningdata[0]['Mining']['oppoid'],
+                  'Network.usr_id_2' => $miningdata[0]['Mining']['myid']
                 )
               )
             )));
