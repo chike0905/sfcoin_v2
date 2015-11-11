@@ -24,13 +24,13 @@
         id: 'latitude',
         name: 'latitude',
         value: position.coords.latitude
-    }).appendTo('#minig_info');
+    }).appendTo('#mining_info');
     $('<input>').attr({
       type: 'hidden',
         id: 'longitude',
         name: 'longitude',
         value: position.coords.longitude
-    }).appendTo('#minig_info');
+    }).appendTo('#mining_info');
     f.submit();        // submit する
   }
 
