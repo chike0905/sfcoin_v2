@@ -21,7 +21,7 @@
     f.action = "./Mining/geopost";    // action(遷移先URL)を設定する
     $('<input>').attr({
       type: 'hidden',
-        id: 'longitude',
+        id: 'latitude',
         name: 'latitude',
         value: position.coords.latitude
     }).appendTo('#minig_info');
