@@ -192,7 +192,76 @@ class MiningController extends AppController {
       $this->set("id",$oppo_data[0]['User']['id']);
     }
   }
+  public function geopost(){
+    //自身のuser_idとusername取得
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
+    if(isset($this->request->data['loginname'])){
+      //入力データの取得
+      $opponent = Sanitize::stripAll(
+        $this->request->data['loginname']);
+      $oppo_data = $this->User->find('all',array('conditions' => array('User.username' => $opponent)));
+      //ユーザーが存在するかチェック
+      if(empty($oppo_data)){
+        $this->Session->setFlash('入力値が不正です');
+        $this->redirect(['controller'=>'mining','action'=>'index']);
+      } else {
+        //位置情報の取得
+        $longitude = Sanitize::stripAll($this->request->data['longitude']);
+        $latitude = Sanitize::stripAll($this->request->data['latitude']);
+        //user table行数（user 数）の取得
+        $user_num = $this->User->find('count');
 
+        for($i = 1; $i <= $user_num; $i++){
+          //友人リストの取得
+          $friend_lists = $this->Network->find('all',array(
+            'fields' => array('Network.usr_id_1','Network.usr_id_2','Network.cost'),
+            'conditions' => array(
+              'OR' => array('Network.usr_id_1' => $i,
+              'Network.usr_id_2' => $i
+            )
+          )));
+          //ネットワーク行列を生成
+          foreach($friend_lists as $list){
+            if($list["Network"]["usr_id_1"] == $i){
+              $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
+              $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
+            } else if($list["Network"]["usr_id_2"] == $i){
+              $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
+              $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
+            }
+          }
+        }
+        //自分または相手がネットワークに所属しているかどうか
+        if(empty($link[$oppo_data[0]['User']['id']]) || empty($link[$user_id])){
+          $distance = 100;
+        } else {
+          $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
+        }
+        //発行量の調節
+        $mining_basic = 10;
+        $mining_amount = $mining_basic * $distance;
+        /*保存するminigdataを位置情報のものに変更*/
+        //miningdataをDBへ保存
+        $miningdata = array("Mining" =>array(
+          'myid' => $user_id ,
+          'oppoid' => $oppo_data[0]['User']['id'],
+          'date' =>date("Y-m-d H:i:s"),
+          'distance' => $distance,
+          'amount' => $mining_amount
+        ));
+
+        $fields = array('myid','oppoid','date','distance','amount');
+        $this->Mining->save($miningdata, false, $fields);
+        /*ここまで変更の必要あり*/
+        $this->set("longitude",$longitude);
+        $this->set("latitude",$latitude);
+        $this->set("username",$oppo_data[0]['User']['username']);
+        $this->set("id",$oppo_data[0]['User']['id']);
+      }
+    }
+  }
   //引数
   //$graph:$array["自分"]["友人"] = costの二次元配列
   //$start:開始点の"自分"
