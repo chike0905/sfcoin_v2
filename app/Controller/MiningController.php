@@ -19,8 +19,7 @@ class MiningController extends AppController {
     $username = $userdatas['username'];
     if(isset($this->request->data['loginname'])){
       //入力データの取得
-      $opponent = Sanitize::stripAll(
-        $this->request->data['loginname']);
+      $opponent = Sanitize::stripAll($this->request->data['loginname']);
       $oppo_data = $this->User->find('all',array('conditions' => array('User.username' => $opponent)));
       //ユーザーが存在するかチェック
       if(empty($oppo_data)){
@@ -32,47 +31,15 @@ class MiningController extends AppController {
         $mining_code = Security::hash($mining_code, 'sha1', true);
         $url = "http://localhost/sfcoin_v2/mining/request?code=".urlencode ($mining_code);
 
-        //user table行数（user 数）の取得
-        $user_num = $this->User->find('count');
-
-        for($i = 1; $i <= $user_num; $i++){
-          //友人リストの取得
-          $friend_lists = $this->Network->find('all',array(
-            'fields' => array('Network.usr_id_1','Network.usr_id_2','Network.cost'),
-            'conditions' => array(
-              'OR' => array('Network.usr_id_1' => $i,
-              'Network.usr_id_2' => $i
-            )
-          )));
-          //ネットワーク行列を生成
-          foreach($friend_lists as $list){
-            if($list["Network"]["usr_id_1"] == $i){
-              $link[$i][$list["Network"]["usr_id_2"]] = $list["Network"]["cost"];
-              $link[$list["Network"]["usr_id_2"]][$i] = $list["Network"]["cost"];
-            } else if($list["Network"]["usr_id_2"] == $i){
-              $link[$i][$list["Network"]["usr_id_1"]] = $list["Network"]["cost"];
-              $link[$list["Network"]["usr_id_1"]][$i] = $list["Network"]["cost"];
-            }
-          }
-        }
-        //自分または相手がネットワークに所属しているかどうか
-        if(empty($link[$oppo_data[0]['User']['id']]) || empty($link[$user_id])){
-          $distance = 100;
-        } else {
-          $distance = $this->_dijkstra($link,$user_id,$oppo_data[0]['User']['id']);
-        }
-        //発行量の調節
-        $mining_basic = 10;
-        $mining_amount = $mining_basic * $distance;
-
+        $mining = $this->_calucurate($opponent,$user_id);
         //miningdataをDBへ保存
         $miningdata = array("Mining" =>array(
           'authcode' => $mining_code,
           'myid' => $user_id ,
           'oppoid' => $oppo_data[0]['User']['id'],
           'date' =>date("Y-m-d H:i:s"),
-          'distance' => $distance,
-          'amount' => $mining_amount
+          'distance' => $mining["distance"],
+          'amount' => $mining["amount"]
         ));
 
         $fields = array('authcode','myid','oppoid','date','distance','amount');
