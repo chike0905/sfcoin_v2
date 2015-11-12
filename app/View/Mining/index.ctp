@@ -15,7 +15,7 @@
   <p class="h4 mt3">発行リクエスト受信</p>
   <p>QRコードを画面幅いっぱいになるよう撮影してください</p>
   <?php
-  echo $this->Form->create(false,array('type' => 'post','action'=>'./request'));
+  echo $this->Form->create(false,array('type' => 'file','action'=>'./qrread'));
   ?>
   <input type="file" accept="image/*" name="capture" style="display:none;" id="file">
   <input type="button" onClick="$('#file').click();" value="QR撮影" class='btn btn-primary black bg-white col-4 mb2'>

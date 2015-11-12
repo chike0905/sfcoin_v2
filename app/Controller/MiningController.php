@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 App::import('Vendor', 'phpqrcode/qrlib');
-App::import('Vendor', 'qrdecoder');
+App::import('Vendor','qrdecoder/QrReader');
 class MiningController extends AppController {
   public $components = array('Session');
   public $uses = array('User','Network','Wallet','Mining');
@@ -53,6 +53,14 @@ class MiningController extends AppController {
     }
   }
 
+
+  public function qrread(){
+    //QRReaderの例外処理
+    $qrcode = new QrReader($_FILES["capture"]["tmp_name"]);
+    $text = $qrcode->text();
+    unlink($_FILES["capture"]["tmp_name"]);
+    $this->redirect($text);
+  }
 
   public function request(){
     //自身のuser_idとusername取得
