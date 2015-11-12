@@ -4,7 +4,7 @@ App::uses('Sanitize', 'Utility');
 App::import('Vendor', 'phpqrcode/qrlib');
 class MiningController extends AppController {
   public $components = array('Session');
-  public $uses = array('User','Network','Wallet','Mining');
+  public $uses = array('User','Network','Wallet','Mining','Amount');
   public function index(){
     //user_idとusername取得
     $userdatas = $this->Auth->user();
@@ -185,12 +185,14 @@ class MiningController extends AppController {
           'oppoid' => $oppo_data[0]['User']['id'],
           'date' =>date("Y-m-d H:i:s"),
           'distance' => $mining["distance"],
-          'amount' => $mining["amount"]
+          'amount' => $mining["amount"],
+          'lng' => $longitude,
+          'lat' => $latitude
         ));
 
-        $fields = array('myid','oppoid','date','distance','amount');
+        $fields = array('myid','oppoid','date','distance','amount','lng','lat');
         $this->Mining->save($miningdata, false, $fields);
-        /*ここまで変更の必要あり*/
+
         $this->set("longitude",$longitude);
         $this->set("latitude",$latitude);
         $this->set("username",$opponent);
