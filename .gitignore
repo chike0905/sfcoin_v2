@@ -23,8 +23,8 @@ nbproject/*
 Thumbs.db
 
 #QRcode
-/app/Vendor/phpqrcode/*
-/app/Vendor/qrdecoder/*
+/app/Vendor/phpqrcode/
+/app/Vendor/qrdecoder/
 
 # Eclipse project files
 /.cache
