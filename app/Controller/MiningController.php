@@ -4,7 +4,7 @@ App::uses('Sanitize', 'Utility');
 App::import('Vendor', 'phpqrcode/qrlib');
 class MiningController extends AppController {
   public $components = array('Session');
-  public $uses = array('User','Network','Wallet','Mining','Amount');
+  public $uses = array('User','Network','Wallet','Mining');
   public function index(){
     //user_idとusername取得
     $userdatas = $this->Auth->user();
@@ -159,46 +159,6 @@ class MiningController extends AppController {
       $this->set("id",$oppo_data[0]['User']['id']);
     }
   }
-  public function geopost(){
-    //自身のuser_idとusername取得
-    $userdatas = $this->Auth->user();
-    $user_id = $userdatas['id'];
-    $username = $userdatas['username'];
-    if(isset($this->request->data['loginname'])){
-      //入力データの取得
-      $opponent = Sanitize::stripAll($this->request->data['loginname']);
-      $oppo_data = $this->User->find('all',array('conditions' => array('User.username' => $opponent)));
-      //ユーザーが存在するかチェック
-      if(empty($oppo_data)){
-        $this->Session->setFlash('入力値が不正です');
-        $this->redirect(['controller'=>'mining','action'=>'index']);
-      } else {
-        //位置情報の取得
-        $longitude = Sanitize::stripAll($this->request->data['longitude']);
-        $latitude = Sanitize::stripAll($this->request->data['latitude']);
-
-        $mining = $this->_calucurate($opponent,$user_id);
-        /*保存するminigdataを位置情報のものに変更*/
-        //miningdataをDBへ保存
-        $miningdata = array("Mining" =>array(
-          'myid' => $user_id ,
-          'oppoid' => $oppo_data[0]['User']['id'],
-          'date' =>date("Y-m-d H:i:s"),
-          'distance' => $mining["distance"],
-          'amount' => $mining["amount"],
-          'lng' => $longitude,
-          'lat' => $latitude
-        ));
-
-        $fields = array('myid','oppoid','date','distance','amount','lng','lat');
-        $this->Mining->save($miningdata, false, $fields);
-
-        $this->set("longitude",$longitude);
-        $this->set("latitude",$latitude);
-        $this->set("username",$opponent);
-      }
-    }
-  }
 
   public function _calucurate($opponent,$user_id){
     //oppodataの取得
@@ -274,7 +234,6 @@ class MiningController extends AppController {
     while( !($start == $route[count($route) - 1]) ) {
       $route[] = $predecessor[$route[count($route) - 1]];
     }
-    //echo implode(' -> ', array_reverse($route)) . "\n";
     return $distance[$goal];
   }
 }
