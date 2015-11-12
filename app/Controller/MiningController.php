@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 App::import('Vendor', 'phpqrcode/qrlib');
+App::import('Vendor', 'qrdecoder');
 class MiningController extends AppController {
   public $components = array('Session');
   public $uses = array('User','Network','Wallet','Mining');
@@ -51,6 +52,7 @@ class MiningController extends AppController {
       }
     }
   }
+
 
   public function request(){
     //自身のuser_idとusername取得
