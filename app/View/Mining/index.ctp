@@ -17,8 +17,9 @@
   <?php
   echo $this->Form->create(false,array('type' => 'file','action'=>'./qrread'));
   ?>
-  <input type="file" accept="image/*" name="capture" style="display:none;" id="file">
-  <input type="button" onClick="$('#file').click();" value="QR撮影" class='btn btn-primary black bg-white col-4 mb2'>
+  <input type="file" accept="image/*" name="capture" style="display:none;" id="file" onchange="$('#fake_input_file').val($(this).val())">
+  <input type="button" onClick="$('#file').click();" value="QR撮影" class='btn btn-primary black bg-white col-4 mb2 mr3 ml3'>
+  <input id="fake_input_file" type="text" value="file未選択" class="field white is-read-only mb2 center "  onClick="$('#file').click();">
   <?php
   echo $this->Form->submit('リクエスト受付',array('class' => 'btn btn-primary black bg-white col-6'));
   echo $this->Form->end();
