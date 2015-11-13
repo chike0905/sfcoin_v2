@@ -36,9 +36,9 @@ class UserController extends AppController {
 
         $data = array("Wallet" => array("coin" => 0));
         $this->Wallet->save($data);
-        $this->Session->setFlash(__($mse));
+        $this->Session->setFlash(__($mse),'errorFlash');
       }else{
-        $this->Session->setFlash(__('パスワード確認の値が一致しません．'));
+        $this->Session->setFlash(__('パスワード確認の値が一致しません．','errorFlash'));
       }
       $this->redirect(array('action' => 'login'));//リダイレクト
     }

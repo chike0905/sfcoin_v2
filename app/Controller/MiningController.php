@@ -24,7 +24,7 @@ class MiningController extends AppController {
       $oppo_data = $this->User->find('all',array('conditions' => array('User.username' => $opponent)));
       //ユーザーが存在するかチェック
       if(empty($oppo_data)){
-        $this->Session->setFlash('入力値が不正です');
+        $this->Session->setFlash('入力値が不正です','errorFlash');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
         //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
@@ -59,7 +59,7 @@ class MiningController extends AppController {
     $text = $qrcode->text();
     unlink($_FILES["capture"]["tmp_name"]);
     if($text == false){
-      $this->Session->setFlash('QRコードが読めません');
+      $this->Session->setFlash('QRコードが読めません','errorFlash');
       $this->redirect(['controller'=>'mining','action'=>'index']);
     }else{
       $this->redirect($text);
@@ -80,11 +80,11 @@ class MiningController extends AppController {
       //miningcode30分以内に実行させたか判定
       $now = date("Y-m-d H:i:s",strtotime("- 30 minute"));
       if(strtotime($now) > strtotime($mining_data[0]["Mining"]["date"])){
-        $this->Session->setFlash('Mining Codeの生成から30分以内に採掘を行ってください');
+        $this->Session->setFlash('Mining Codeの生成から30分以内に採掘を行ってください','errorFlash');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
         if($mining_data[0]["Mining"]["active"] == 0){
-          $this->Session->setFlash('このMining Codeでの採掘はすでに行われています');
+          $this->Session->setFlash('このMining Codeでの採掘はすでに行われています','errorFlash');
           $this->redirect(['controller'=>'mining','action'=>'index']);
         }else{
           $oppoid = $mining_data[0]["Mining"]["myid"];
@@ -94,7 +94,7 @@ class MiningController extends AppController {
         }
       }
     } else {
-        $this->Session->setFlash('Mining Codeが不正です');
+        $this->Session->setFlash('Mining Codeが不正です','errorFlash');
         $this->redirect(['controller'=>'mining','action'=>'index']);
     }
   }
