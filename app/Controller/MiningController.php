@@ -55,11 +55,15 @@ class MiningController extends AppController {
 
 
   public function qrread(){
-    //QRReaderの例外処理
     $qrcode = new QrReader($_FILES["capture"]["tmp_name"]);
     $text = $qrcode->text();
     unlink($_FILES["capture"]["tmp_name"]);
-    $this->redirect($text);
+    if($text == false){
+      $this->Session->setFlash('QRコードが読めません');
+      $this->redirect(['controller'=>'mining','action'=>'index']);
+    }else{
+      $this->redirect($text);
+    }
   }
 
   public function request(){
