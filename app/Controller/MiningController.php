@@ -55,14 +55,71 @@ class MiningController extends AppController {
 
 
   public function qrread(){
-    $qrcode = new QrReader($_FILES["capture"]["tmp_name"]);
-    $text = $qrcode->text();
-    unlink($_FILES["capture"]["tmp_name"]);
-    if($text == false){
-      $this->Session->setFlash('QRコードが読めません','errorFlash');
+    $type = exif_imagetype($_FILES["capture"]["tmp_name"]);
+    switch ($type) {
+    case 1:
+       $file = imagecreatefromgif($_FILES["capture"]["tmp_name"]);
+        break;
+    case 2:
+       $file = imagecreatefromjpeg($_FILES["capture"]["tmp_name"]);
+        break;
+    case 3:
+       $file = imagecreatefrompng($_FILES["capture"]["tmp_name"]);
+        break;
+    default:
+       $file = false;
+    }
+    //画像でなければ弾く
+    $file2 = $file;
+    if($file2 =! false){
+      $width = ImageSx($file); // 画像の幅を取得
+      $height = ImageSy($file); // 画像の高さを取得
+      $min_width = 600; // 幅の最低サイズ
+      $min_height = 600; // 高さの最低サイズ
+
+      if($width >= $min_width|$height >= $min_height){
+        if($width == $height) {
+          $new_width = $min_width;
+          $new_height = $min_height;
+        } else if($width > $height) {//横長の場合
+          $new_width = $min_width;
+          $new_height = $height*($min_width/$width);
+        } else if($width < $height) {//縦長の場合
+          $new_width = $width*($min_height/$height);
+          $new_height = $min_height;
+        }
+        //　画像生成
+        $out = ImageCreateTrueColor($new_width , $new_height);
+        ImageCopyResampled($out, $file,0,0,0,0, $new_width, $new_height, $width, $height);
+      }
+      switch ($type) {
+      case 1:
+        $new_file = "./resized.gif";
+        ImageGIF($out, $new_file);
+        break;
+      case 2:
+        $new_file = "./resized.jpeg";
+        ImageJPEG($out, $new_file);
+        break;
+      case 3:
+        $new_file = "./resized.png";
+        ImagePNG($out, $new_file);
+        break;
+      default:
+      }
+      $qrcode = new QrReader($new_file);
+      $text = $qrcode->text();
+      unlink($_FILES["capture"]["tmp_name"]);
+      unlink($new_file);
+      if($text == false){
+        $this->Session->setFlash('QRコードが読めません','errorFlash');
+        $this->redirect(['controller'=>'mining','action'=>'index']);
+      }else{
+        $this->redirect($text);
+      }
+    } else {
+      $this->Session->setFlash('画像データが不正です','errorFlash');
       $this->redirect(['controller'=>'mining','action'=>'index']);
-    }else{
-      $this->redirect($text);
     }
   }
 
