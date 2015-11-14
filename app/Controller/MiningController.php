@@ -30,7 +30,7 @@ class MiningController extends AppController {
         //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
         $mining_code = $oppo_data[0]['User']['username'].time();
         $mining_code = Security::hash($mining_code, 'sha1', true);
-        $url = "http://localhost/sfcoin_v2/mining/request?code=".urlencode ($mining_code);
+        $url = $mining_code;
 
         $mining = $this->_calucurate($opponent,$user_id);
         //miningdataをDBへ保存
@@ -115,7 +115,13 @@ class MiningController extends AppController {
         $this->Session->setFlash('QRコードが読めません','errorFlash');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       }else{
-        $this->redirect($text);
+        $mining_data = $this->Mining->find('all',array('conditions' => array('Mining.authcode' => $text)));
+        if(empty($mining_data)){
+          $this->Session->setFlash('QRデータが不正です','errorFlash');
+          $this->redirect(['controller'=>'mining','action'=>'index']);
+        }else{
+          $this->redirect(['controller'=>'mining','action'=>'request','?'=>array('code' => $text)]);
+        }
       }
     } else {
       $this->Session->setFlash('画像データが不正です','errorFlash');
