@@ -197,18 +197,17 @@ class MiningController extends AppController {
       $miningactiv = array("Mining" =>array('id' => $mining_id,'active' => false));
       $fields = array('active');
       $this->Mining->save($miningactiv, false, $fields);
-
       //距離の変更
       if($miningdata[0]['Mining']['distance'] > 10){
         if($miningdata[0]['Mining']['distance'] == 100){
           $data = array("Network" => array(
             'usr_id_1' => $miningdata[0]['Mining']['myid'],
             'usr_id_2' => $miningdata[0]['Mining']['oppoid'],
-            'cost' => $miningdata[0]['Mining']['distance']
+            'cost' => 90
           ));
-          $feilds = array('usr_id_1','usr_id_2','cost');
-        } else {
-          $network =  $this->Network->find('all',array('fields' =>array('id') ,
+          $fields = array('usr_id_1','usr_id_2','cost');
+        }else{
+          $network = $this->Network->find('all',array('fields' =>array('id'),
             'conditions' => array(
               'OR' => array(
                 array(
@@ -226,7 +225,7 @@ class MiningController extends AppController {
             'id' => $network[0]['Network']['id'],
             'cost' => $new_distance
           ));
-          $fields = array('cost');
+          $fields = array('id','cost');
         }
         $this->Network->save($data, false, $fields);
       }
