@@ -199,27 +199,27 @@ class MiningController extends AppController {
       $this->Mining->save($miningactiv, false, $fields);
       //距離の変更
       if($miningdata[0]['Mining']['distance'] > 10){
-        if($miningdata[0]['Mining']['distance'] == 100){
+        $network = $this->Network->find('all',array('fields' =>array('id'),
+          'conditions' => array(
+            'OR' => array(
+              array(
+                'Network.usr_id_1' => $miningdata[0]['Mining']['myid'],
+                'Network.usr_id_2' => $miningdata[0]['Mining']['oppoid']
+              ),
+              array(
+                'Network.usr_id_1' => $miningdata[0]['Mining']['oppoid'],
+                'Network.usr_id_2' => $miningdata[0]['Mining']['myid']
+              )
+            )
+          )));
+        if(empty($network)){
           $data = array("Network" => array(
             'usr_id_1' => $miningdata[0]['Mining']['myid'],
             'usr_id_2' => $miningdata[0]['Mining']['oppoid'],
-            'cost' => 90
+            'cost' => $miningdata[0]['Mining']['distance']
           ));
           $fields = array('usr_id_1','usr_id_2','cost');
         }else{
-          $network = $this->Network->find('all',array('fields' =>array('id'),
-            'conditions' => array(
-              'OR' => array(
-                array(
-                  'Network.usr_id_1' => $miningdata[0]['Mining']['myid'],
-                  'Network.usr_id_2' => $miningdata[0]['Mining']['oppoid']
-                ),
-                array(
-                  'Network.usr_id_1' => $miningdata[0]['Mining']['oppoid'],
-                  'Network.usr_id_2' => $miningdata[0]['Mining']['myid']
-                )
-              )
-            )));
           $new_distance = $miningdata[0]['Mining']['distance'] - 10;
           $data = array("Network" => array(
             'id' => $network[0]['Network']['id'],
