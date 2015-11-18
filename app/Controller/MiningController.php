@@ -23,7 +23,7 @@ class MiningController extends AppController {
       $opponent = Sanitize::stripAll($this->request->data['loginname']);
       $oppo_data = $this->User->find('all',array('conditions' => array('User.username' => $opponent)));
       //ユーザーが存在するかチェック
-      if(empty($oppo_data)){
+      if(empty($oppo_data) || $opponent == $username){
         $this->Session->setFlash('入力値が不正です','errorFlash');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
@@ -151,8 +151,11 @@ class MiningController extends AppController {
           $this->redirect(['controller'=>'mining','action'=>'index']);
         }else{
           $oppoid = $mining_data[0]["Mining"]["myid"];
+          $oppodata = $this->User->find('all',array('conditions' => array('User.id' => $oppoid)));
+          $opponame = $oppodata[0]['User']['username'];
 
           $this->set("code",$mining_code);
+          $this->set("opponame",$opponame);
           $this->set("oppoid",$oppoid);
         }
       }

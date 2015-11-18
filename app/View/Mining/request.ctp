@@ -2,7 +2,7 @@
 <?php
 echo $this->Session->flash();
 ?>
-<p class="h4">USER ID<?php echo $oppoid; ?>とMiningを行います</p>
+<p class="h4"><?php echo $opponame; ?>とMiningを行います</p>
 <?php
 echo $this->Form->create(false,array('type' => 'post','action'=>'./mining'));
 echo $this->Form->hidden('oppoid' ,array('value' => $oppoid));
