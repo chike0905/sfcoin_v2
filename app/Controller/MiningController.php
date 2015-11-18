@@ -151,8 +151,11 @@ class MiningController extends AppController {
           $this->redirect(['controller'=>'mining','action'=>'index']);
         }else{
           $oppoid = $mining_data[0]["Mining"]["myid"];
+          $oppodata = $this->User->find('all',array('conditions' => array('User.id' => $oppoid)));
+          $opponame = $oppodata[0]['User']['username'];
 
           $this->set("code",$mining_code);
+          $this->set("opponame",$opponame);
           $this->set("oppoid",$oppoid);
         }
       }
