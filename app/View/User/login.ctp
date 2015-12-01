@@ -1,6 +1,6 @@
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User'); ?>
-<p class="h3">Please enter your username and password</p>
+<p class="h3">ユーザー名とパスワードを入力してください</p>
 <?php
 echo $this->Form->input('username',
   array('label' => array(
