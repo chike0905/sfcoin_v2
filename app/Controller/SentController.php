@@ -31,9 +31,9 @@ class SentController extends AppController {
   }
   public function action(){
     //user_idとusername取得
-    $userdatas = $this->User->find('all',array('conditions' => array('User.id' => 2)));
-    $user_id = $userdatas[0]['User']['id'];
-    $username = $userdatas[0]['User']['username'];
+    $userdatas = $this->Auth->user();
+    $user_id = $userdatas['id'];
+    $username = $userdatas['username'];
 
     if(ctype_digit(strval($this->request->data['text1']))){
     //入力データの取得
@@ -60,7 +60,6 @@ class SentController extends AppController {
       $to_data = array("Wallet" =>array('id' => $friend,'coin' => $to_coin ));
       $fields = array('coin');
       $this->Wallet->save($to_data, false, $fields);
-
       //送金データをDBへ挿入
       $sentdata = array("Sent" => array('from_id' => $user_id ,'to_id' => $friend ,'sent' => $amount));
       $fields = array('from_id','to_id','sent');

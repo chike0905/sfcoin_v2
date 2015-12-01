@@ -28,7 +28,7 @@ class WalletController extends AppController {
       $getuser = $this->User->find('all',array('conditions' => array('User.id' => $getdatas[$i]['Sent']['from_id']),
                                               'fields' => array('username'))
                                  );
-      $getdatas[$i]['Sent']['to_id'] = $getuser[0]['User']['username'];
+      $getdatas[$i]['Sent']['from_id'] = $getuser[0]['User']['username'];
     }
 
     //データ受け渡し
