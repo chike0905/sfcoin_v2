@@ -45,6 +45,10 @@ class SentController extends AppController {
       //送金元wallet
       $from_wallet = $this->Wallet->find('all',array('conditions' => array('Wallet.id' => $user_id)));
       $from_coin = $from_wallet[0]["Wallet"]["coin"];
+      if($from_coin < $amount){
+        $this->Session->setFlash('所有コイン数より多い送金金額です','errorFlash');
+        $this->redirect(['controller'=>'Sent','action'=>'index']);
+      }
       //送金先wallet
       $to_wallet = $this->Wallet->find('all',array('conditions' => array('Wallet.id' => $friend)));
       $to_coin = $to_wallet[0]["Wallet"]["coin"];
@@ -68,7 +72,7 @@ class SentController extends AppController {
       $this->set("amount",$amount);
       $this->set("friend",$friend);
     } else {
-      $this->Session->setFlash('入力値が不正です');
+      $this->Session->setFlash('入力値が不正です','errorFlash');
       $this->redirect(['controller'=>'Sent','action'=>'index']);
     }
   }
