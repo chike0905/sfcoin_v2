@@ -27,6 +27,26 @@ class MiningController extends AppController {
         $this->Session->setFlash('入力値が不正です','errorFlash');
         $this->redirect(['controller'=>'mining','action'=>'index']);
       } else {
+        $lastmining = $this->Mining->find('first',array(
+          'order' => array('Mining.date DESC'),
+          'conditions' => array(
+            'AND' => array(
+              'OR' => array(
+                array(
+                  'Mining.myid' => $user_id,
+                  'Mining.oppoid' => $oppo_data[0]['User']['id']
+                ),
+                array(
+                  'Mining.myid' => $user_id,
+                  'Mining.oppoid' => $oppo_data[0]['User']['id']
+                )
+              ),
+              'Mining.active' => 0
+            )
+          )));
+        var_dump($lastmining);
+
+
         //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
         $mining_code = $oppo_data[0]['User']['username'].time();
         $mining_code = Security::hash($mining_code, 'sha1', true);
