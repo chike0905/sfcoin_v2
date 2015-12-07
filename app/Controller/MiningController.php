@@ -224,7 +224,7 @@ class MiningController extends AppController {
           ));
           $fields = array('usr_id_1','usr_id_2','cost');
         }else{
-          $new_distance = $miningdata[0]['Mining']['distance'] - 10;
+          $new_distance = $miningdata[0]['Mining']['distance'] / 2;
           $data = array("Network" => array(
             'id' => $network[0]['Network']['id'],
             'cost' => $new_distance
