@@ -1,5 +1,6 @@
 <p class="h3">採掘確認</p>
 <p><?php echo $username ?>と採掘を行います</p>
+<p><?php echo $amount ?>SFCoin採掘されます</p>
 <p>30分以内に採掘を行ってください</p>
 <?php
 ob_start();

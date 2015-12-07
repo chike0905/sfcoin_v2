@@ -46,6 +46,7 @@ class MiningController extends AppController {
         $fields = array('authcode','myid','oppoid','date','distance','amount');
         $this->Mining->save($miningdata, false, $fields);
 
+        $this->set("amount",$mining["amount"]);
         $this->set("url",$url);
         $this->set("username",$oppo_data[0]['User']['username']);
         $this->set("id",$oppo_data[0]['User']['id']);
