@@ -44,10 +44,12 @@ class MiningController extends AppController {
               'Mining.active' => 0
             )
           )));
-        $now = date("Y-m-d H:i:s",strtotime("- 1 day"));
-        if(strtotime($now) < strtotime($lastmining["Mining"]["date"])){
-          $this->Session->setFlash('前回の発行から1日経っていません','errorFlash');
-          $this->redirect(['controller'=>'mining','action'=>'index']);
+        if(!empty($lastmining)){
+          $now = date("Y-m-d H:i:s",strtotime("- 1 day"));
+          if(strtotime($now) < strtotime($lastmining["Mining"]["date"])){
+            $this->Session->setFlash('前回の発行から1日経っていません','errorFlash');
+            $this->redirect(['controller'=>'mining','action'=>'index']);
+          }
         }
 
         //ユーザー名とtimestampを結合してハッシュ化し、mining codeとする
