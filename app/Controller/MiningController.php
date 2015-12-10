@@ -205,7 +205,7 @@ class MiningController extends AppController {
       $mining_id = $miningdata[0]['Mining']['id'];
       $mining_amount = $miningdata[0]['Mining']['amount'];
 
-      $oppo_data = $this->User->find('all',array('conditions' => array('user.id' => $opponent)));
+      $oppo_data = $this->User->find('all',array('conditions' => array('User.id' => $opponent)));
 
       //miningをDBへ保存
       $oppocoin = $this->Wallet->find('all',array('fields' =>array('coin') ,'conditions' => array('Wallet.id' => $opponent)));
