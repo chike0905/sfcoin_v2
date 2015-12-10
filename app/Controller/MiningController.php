@@ -37,8 +37,8 @@ class MiningController extends AppController {
                   'Mining.oppoid' => $oppo_data[0]['User']['id']
                 ),
                 array(
-                  'Mining.myid' => $user_id,
-                  'Mining.oppoid' => $oppo_data[0]['User']['id']
+                  'Mining.oppoid' => $user_id,
+                  'Mining.myid' => $oppo_data[0]['User']['id']
                 )
               ),
               'Mining.active' => 0
